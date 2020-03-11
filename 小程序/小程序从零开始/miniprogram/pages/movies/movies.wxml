@@ -1,0 +1,28 @@
+<import src="movie-list/movie-list-template" />
+
+<view class="search">
+  <icon type="search" class="search-img" size="13" color="#405f80"></icon>
+  <input type="text" placeholder="你的名字" placeholder-class="placeholder" bindfocus="onBindFocus"
+    bindconfirm="onBindChange"
+  />
+  <text wx:if="{{showSearch}}" bindtap="closeBtn" class="close-search">X</text>
+</view>
+<view class="container"  wx:if="{{!showSearch}}">
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...inTheater}}"/>
+  </view>
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...comingSoon}}" />
+  </view>
+  <view class="movies-template">
+    <template is="movieListTemplate" data="{{...top250}}" />
+  </view>
+</view>
+
+<view wx:if="{{showSearch}}">
+    <template is="movieListTemplate" data="{{...searchRes}}" />
+</view>
+<button bindtap="getAdress">获取地址</button>
+<button bindtap="isLogin">是否登录</button>
+<button bindtap="getUserInfo" open-type="getUserInfo">获取用户信息</button>
+<button bindtap="info">授权信息</button>

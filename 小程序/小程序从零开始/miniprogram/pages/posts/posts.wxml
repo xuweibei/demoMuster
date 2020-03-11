@@ -1,0 +1,17 @@
+<import src="post-item/post-item" />
+<view>
+  <swiper indicator-dots autoplay interval='2000' vertical>
+    <swiper-item>
+      <image style="" src="/images/1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image style="" src="/images/2.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image style="" src="/images/3.jpg"></image>
+    </swiper-item>
+  </swiper>
+  <view catch:tap="onTap">
+      <template is="lalala" />
+  </view>
+</view>

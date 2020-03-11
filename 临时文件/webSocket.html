@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+    <script>
+        let ws = new WebSocket('ws://121.40.165.18:8800');
+        const main = document.getElementById('main');
+        ws.onope = function (){
+            console.log('链接了');
+            ws.send('黄寺大街开发')
+        }
+        ws.onmessage = function (e){
+            console.log('接收服务器返回的对象',e);
+            main.innerHTML = e.data
+        }
+    </script>
+</body>
+</html>

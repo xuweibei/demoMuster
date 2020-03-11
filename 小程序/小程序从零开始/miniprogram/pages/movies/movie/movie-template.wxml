@@ -1,0 +1,9 @@
+<import src="../movie-start/start-template" />
+
+<template name="movieTemplate">
+  <view class="movie-container">
+    <image class="movie-img" src="{{imgUrl}}"></image>
+    <text class="movie-title">{{title}}</text>
+    <template is="startTemplate" data="{{soon}}" />
+  </view>
+</template>

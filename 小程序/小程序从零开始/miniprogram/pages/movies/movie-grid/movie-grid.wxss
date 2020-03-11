@@ -1,0 +1,7 @@
+@import '../movie/movie-template';
+
+
+.info {
+  float: left;
+  margin:30rpx 0;
+}

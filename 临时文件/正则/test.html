@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    1、验证字符串的组成规律，第一个需为数字，后面可以是字母，数字，下划线，总长度为5-20位；
+    2、让2013-6-7变成2013.6.7；
+    3、const str = 'get-element-by-id'改成驼峰命名；
+    4、单词字母都得大写；
+    5、提取链接地址；
+        var str = 'IT面试题博客中包含很多  <a href="http://hi.baidu.com/mianshiti/blog/category/微软面试题">微软面试题</a>';
+    6、获取url的参数；
+        var  url = "http://www.baidu.com?name=elephant&age=25&sex=male"；
+    7、判断字符串是否包含数字；
+        var  str = 'sji7ak8';
+    8、简单匹配电话；
+    <script>
+        const reg1 = /^\d{1}\w{4,19}$/;
+
+        const str2 = '2013-6-7';
+        const reg2 = /-/g
+        const str3 = str2.replace(reg2,'.');
+        // console.log(str3)
+
+        const str4 = 'get-element-by_id';
+        const reg4 = /(-|_)\w/g;
+        const str5 = str4.replace(reg4,($0,$1,$2)=>{
+            return $0 = $0.toLocaleUpperCase().replace('-','').replace('_','')
+        })
+
+
+        var name = ' han mei mei';
+        const reg6 = /\b\w/g;
+        const str6 = name.replace(reg6,($0,$1)=>{
+            // console.log($0)
+            return $0.toLocaleUpperCase()
+        })
+        console.log(str6,'地方了kg')
+
+       
+
+        var str7 = 'IT面试题博客中包含很多  <a href="http://hi.baidu.com/mianshiti/blog/category/">微软面试题</a>';
+        const reg7 = /<a(?: [^a]*)+href="(.*)"(?: [^a]*)*>/;
+        const str9 = str7.match(reg7)[1]
+        // console.log(str9,'的')
+
+
+        var  url = "http://www.baidu.com?name=elephant&age=2-55&sex=male";
+        // const reg8 = /(\w+)=(\w+)/g;//参数中没有特殊字符
+        // /(\\?|\\&)\w+=([^\\&]+)/g
+        const reg8 = /(\\?|\\&)\w+=[^\\&]+/g
+        const str10 = url.match(reg8);
+        console.log(str10)
+
+
+        const str11 = 'sjiak';
+        const reg9 = /\d/
+        console.log(reg9.test(str11))
+
+        const reg10 = /^1[3456789]\d{9}$/
+
+    </script>
+</body>
+</html>

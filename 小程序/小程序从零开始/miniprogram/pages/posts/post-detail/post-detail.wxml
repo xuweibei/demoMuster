@@ -1,0 +1,19 @@
+<view class="container">
+  <image class="head-image" src="/images/1.jpg"></image>
+  <image class="audio" src="/images/6.jpg"></image>
+  <view class="author-date">
+    <image class="avatar" src="/images/2.jpg"></image>
+    <text class="author">路飞</text>
+    <text class="const-text">发表于</text>
+    <text class="date">三天前</text>
+  </view>
+  <text class="title">离开是电饭锅看来</text>
+  <view class="tool">
+    <view class="circle-img">
+      <image src="/images/3.jpg"></image>
+      <image class="share-img" src="/images/4.jpg"></image>
+    </view>
+    <view class="horizon"></view>
+  </view>
+  <text class="detail">看见收到货放接口号开始</text>
+</view>

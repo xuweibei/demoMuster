@@ -1,0 +1,19 @@
+<template name="lalala">
+  <view class="post-container">
+    <view class="post-author-date">
+      <image class="post-author" src="../../images/4.jpg"></image>
+      <text class="post-date">路飞夫妇</text>
+    </view>
+    <text class="post-title">今天去郊游</text>
+    <image class="post-image" src="../../images/5.jpg"></image>
+    <text class="post-content">回家考虑是当回家考虑是当客户家阿萨德开股份后就开始打发回家考虑是当客户家阿萨德开股份后就开始打发回家考虑是当客户家阿萨德开股份后就开始打发客户家阿萨德开股份后就开始打发</text>
+    <view class="post-like">
+      <image class="post-like-image" src="/images/5.jpg"></image>
+      <text class="post-like-text">100</text>
+      <image class="post-like-image" src="/images/6.jpg"></image>
+      <text class="post-like-text">100</text>
+    </view>
+  </view>
+
+</template>
+

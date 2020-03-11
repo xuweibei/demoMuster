@@ -1,0 +1,7 @@
+<view class="container">
+  <image class="user-avatar" src="/images/1.jpg"></image>
+  <text class="user-name">新世界</text>
+  <view class="moto-container" catch:tap="onTap">
+    <text class="moto">开启海贼新世界</text>
+  </view>
+</view>

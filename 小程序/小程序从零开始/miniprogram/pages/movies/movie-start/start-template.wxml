@@ -1,0 +1,12 @@
+<template name="startTemplate">
+  <view class="start-container">
+    <view class="start">
+      <image src="/images/1.jpg"></image>
+      <image src="/images/1.jpg"></image>
+      <image src="/images/1.jpg"></image>
+      <image src="/images/1.jpg"></image>
+      <image src="/images/1.jpg"></image>
+    </view>
+    <text class="start-score">{{soon}}</text>
+  </view>
+</template>

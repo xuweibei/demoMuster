@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动抽奖</title>
+    <script src="./js/zepto/zepto.js"></script>
+    <script src="./js/zepto/fx.js"></script>
+    <script src="./js/index.js"></script>
+    <style>
+        html,body{
+            width:100%;
+            height:100%
+        }
+        html{
+            font-size:62.5%;
+        }
+        body{
+            font-family: "华文细黑";
+            background:url('./images/bg.jpg') no-repeat;
+            background-size: 100%;
+        }
+        .box {
+            font-family: "宋体";
+            font-size: 2.4rem;
+            height: 10rem;
+            line-height: 10rem;
+            text-align: center;
+            color:#fff;
+            background:rgba(0,0,0,0.5);
+            margin:10rem auto 0;
+            width:10rem;
+            border-radius: 10px;
+
+        }
+        #scroll0sy{
+            width:100%;
+            height:100%;
+            border-radius: 10px;
+        }
+        .btn{
+            width:12rem;
+            height:3rem;
+            background: rgb(231, 114, 46);
+            line-height: 3rem;
+            position: absolute;
+            left: 50%;
+            margin-left: -5.5rem;
+            top: 50%;
+            font-size:2rem;
+            border-radius: 6px;
+            color:#ccc
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+    var scroll;
+    $(function(){
+        const arr = [5,6,7,8];
+		for(i=0;i<1;i++){
+			$("body").append("<div id='scroll"+i+"' class='box'></div>");
+            $("#scroll"+i).luckDraw(arr.length,arr);
+		}
+    })
+    </script>
+</body>
+</html>

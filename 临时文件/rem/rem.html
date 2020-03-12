@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin:0;
+            padding:0
+        }
+        .box{
+            width:100%;
+            height:22.4rem;
+            background:red;
+            padding-top:24rem;
+        }
+        .box div{
+            width:92rem;
+            height: 29rem;
+            background:#ccc;
+            margin:0 auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            <!-- <img src="http://img1.imgtn.bdimg.com/it/u=2909823422,3362934663&fm=11&gp=0.jpg" /> -->
+        </div>
+
+    </div>
+    <script>
+        const width = document.documentElement.clientWidth;
+        console.log(width)
+        document.documentElement.style.fontSize = width/100 + 'px';
+
+        window.onresize = function(){
+            const width = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = width/100 + 'px';
+        }
+        /*
+            rem 举例
+                比如设计图是750的，那现在我们可以按照一定的比例对他进行等比划分，比如，将他分成10份，那1份就是75；
+                将这个75设置到html的font-size中去；那这个时候这个设计图下，1rem的比例就好了，现在有一个宽度为75px的盒子，
+                那他的宽度就可以设置成1rem；
+
+                在设备变换的时候，比如变成640，用640/10 等于64，那么现在这个盒子的宽度就变成了64px了；因为设备变小了，所以这个宽度也等比缩放了；
+
+
+                比如在750的时候，设置的1rem = 75px;  那么 75/750这个就是比例了；设备切换的时候都得按照这个比例来计算他的rem值，
+                你就这么想，如果现在是一个750分辨率的设备来计算， 那他的rem就是  750 *  75/750 = 75;
+                现在变换的就是这个设备的分辨率而已比例是一开始就确定下来了。
+
+        */
+    </script>
+</body>
+</html>

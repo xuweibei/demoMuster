@@ -1,0 +1,12 @@
+.Roperation{
+    width:200px;
+    height:60px;
+    padding-top:30px;
+}
+.RoperationDelete{
+    float:left !important;
+    margin-right:20px !important
+}
+.RoperationBack{
+    float:left !important;
+}

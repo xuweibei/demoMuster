@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>中博教务管理系统</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="https://exlibjs.zbgedu.com/libjs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://exlibjs.zbgedu.com/libjs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
+        <script type="text/javascript" src="https://exlibjs.zbgedu.com/libjs/layer/3.1/layer.js"></script>
+        <script>
+            
+            var loginUrl = 'https://oa.zbgedu.com';//oa入口( 正式勿改 )
+            // var loginUrl = 'https://oademo.zbgedu.com';//oa入口( 测试地址 )
+
+            var eduUrl = 'https://zbes.zbgedu.com';//教务入口//接口地址( 正式 )
+            // var eduUrl = 'https://zbesdemo.zbgedu.com';//教务入口//接口地址( demo预生产 )
+
+            var educode = $.cookie('educode');//获取oa储存的用户token
+            
+            if(educode){
+                $.ajax({
+                    type:'post',
+                    url: eduUrl+'/edu/login/setMember',
+                    data:{
+                        token: educode,
+                        verTT: new Date().getTime()
+                    },
+                    success: function(data) {
+                        if(data.state == 'success'){
+                            var token = data.data;
+                            $.cookie("token", token);
+                            // window.localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                            // setTimeout(function(){
+                                window.location.href = eduUrl;
+                            // },3000)
+                        }else{
+                            if(data.msg == 'nologin'){
+                                layer.msg('登录过期了，请您重新登录！',{offset: '100px',time: 3000,anim: 6});
+                                setTimeout(function(){
+                                    //返回oa登录页
+                                    window.location.href = loginUrl;
+                                },3000)
+                            }else{
+                                layer.msg(data.msg,{offset: '100px',time: 3000,anim: 6});
+                                setTimeout(function(){
+                                    //返回oa首页
+                                    window.location.href = loginUrl+'/user/welcome';
+                                    // window.history.go(-1);
+                                    // window.history.back();
+                                },3000)
+                            }
+                        }
+                    },
+                    error: function(data){
+                        layer.msg('网络故障，请检查网络后重试！',{offset: '100px',time: 3000,anim: 6});
+                        setTimeout(function(){
+                            //返回oa首页
+                            window.location.href = loginUrl+'/user/welcome';
+                            // window.history.go(-1);
+                            // window.history.back();
+                        },3000)
+                    }
+                })
+            }else{
+                layer.msg('登录过期了，请您重新登录！',{offset: '100px',time: 3000,anim: 6});
+                setTimeout(function(){
+                    window.location.href = loginUrl;
+                },3000)
+            }
+            
+        </script>
+    </head>
+
+    <body>
+            <script>
+                //百度统计
+                window.addEventListener('hashchange', () => {
+                    var _hmt = _hmt || [];
+                    (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?a28be3727c65d3679f8dfee37726f44e";
+                    var s = document.getElementsByTagName("script")[0]; 
+                    s.parentNode.insertBefore(hm, s);
+                    })();
+                })
+            </script>
+       
+    </body>
+</html>

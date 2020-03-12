@@ -1,0 +1,10 @@
+.Parentitem{
+    width:48% !important;
+    position: relative;
+}
+.Subitem{
+    width:48%;
+    position: absolute;
+    left:108%;
+    top:-6px;
+}

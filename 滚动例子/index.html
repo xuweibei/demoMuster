@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/jquery.min.js"></script>
+<script src="js/indexjs.js"></script>
+<style>
+ 
+.sdddq {
+	font-family: "宋体";
+	font-size: 20px;
+	height: 30px;
+	width: 150px;
+	
+	 
+}
+.lhj {
+	font-family: "宋体";
+	font-size: 60px;
+	height: 100px;
+	width: 350px;
+	line-height: 100px;
+	text-align: center;
+	float:left;
+}
+
+.sssd {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #999;
+	text-align: center;
+}
+.bgColor{
+ 	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#22000000', EndColorStr='#33FFFFFF'); 
+	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0, 0, 0, 0.4) 100%, #FFFFFF 100%); 
+}
+.bgColor1{
+ 	filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#22FFFFFF', EndColorStr='#33000000'); 
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.2) 80%, rgba(0, 0, 0, 0.4) 100%, #FFFFFF 100%); 
+}
+
+
+</style>  
+</head>
+<title>111档</title>
+<body>
+<p><br />
+</p>
+<div id="laohuji" class="lhj"></div>
+ 
+</body>
+</html>
+<script>
+	var laohuji;
+	$(function() {
+		for(i=0;i<2;i++){
+			$("body").append("<div id='laohuji"+i+"' class='lhj'></div>");
+			laohuji = $("#laohuji"+i).luckDraw(4);
+		}
+		laohuji = $("#laohuji").luckDraw(4);//以div的扩展.的形式进行插件的展示和制作。
+	 	 
+		for(i=0;i<2;i++){
+			$("#laohuji"+i+"Click").trigger("click"); 
+		}
+		
+		 
+		
+		//{
+//			dragSelector : "#sort",
+//			placeHolderTemplate : "<tr>aaaa</tr>",
+//			dragEnd : function() {
+//				$("#doSort").css("display", "");
+//			}
+//		} 
+	});
+	function doSort() {
+		Duang.getService("shopSettingService").changeCyclingImgSort(dragTable.getOrders());
+	}
+</script>

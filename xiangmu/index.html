@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title><%= htmlWebpackPlugin.options.title %></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="https://www.zbgedu.com/favicon.ico">
+		<!-- Polyfills -->
+    <!--[if lt IE 10]>
+    <script src="https://as.alipayobjects.com/g/component/??console-polyfill/0.2.2/index.js,es5-shim/4.5.7/es5-shim.min.js,es5-shim/4.5.7/es5-sham.min.js,es6-shim/0.35.1/es6-sham.min.js,es6-shim/0.35.1/es6-shim.min.js,html5shiv/3.7.2/html5shiv.min.js,media-match/2.0.2/media.match.min.js"></script>
+    <![endif]-->
+    <script src="https://as.alipayobjects.com/g/component/??es6-shim/0.35.1/es6-sham.min.js,es6-shim/0.35.1/es6-shim.min.js"></script>
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <script>
+            window.Global_AppName='<%= htmlWebpackPlugin.options.title %>';
+            window.Global_Copyrigh='<%= htmlWebpackPlugin.options.copyright %>';
+        </script>
+    </head>
+
+    <body>
+        <div id="root">
+        </div>
+        <script>
+            //百度统计
+            window.addEventListener('hashchange', () => {
+                var _hmt = _hmt || [];
+                (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?a28be3727c65d3679f8dfee37726f44e";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+                })();
+            })
+        </script>
+    </body>
+</html>

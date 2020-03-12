@@ -1,0 +1,6 @@
+.table tbody tr td{
+    background:#fff !important;
+}
+.table tbody:hover{
+    background:red !important;
+}

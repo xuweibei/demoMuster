@@ -1,0 +1,43 @@
+import React, {Component} from "react";
+import Editor from '../../../components/editor/editor';
+import {Button, message} from "antd";
+import Request from "utils/request";
+class Environ extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            body: {},
+        }
+    }
+    handleChange = value => {
+        console.log(12323, value)
+        this.setState({body: value})
+    }
+    
+    onSave = () => {
+        console.log(12323, this.state.body)
+        Request('/apis/admin/v1/clusters/nerbotest', {
+            method: "put", body: this.state.body
+        }).then(res => {
+            if (res.status === "Success") {
+                message.success("提交成功");
+            }
+        });
+    };
+    onCancel = () => {
+        window.history.back()
+    }
+    
+    render(){
+        return(
+            <div >
+                <Editor onChange = {this.handleChange}/>
+                <div style={{textAlign: "center"}}>
+                    <Button style={{background:'#37CBC1',color:'#fff'}} onClick={this.onSave.bind(this)}>保存</Button>
+                    <Button style={{marginLeft:20}} onClick={this.onCancel}>取消</Button>
+                </div>
+            </div>
+        )
+    }
+}
+export default Environ ;

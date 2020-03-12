@@ -1,0 +1,210 @@
+// * txt文本示例
+//       *test=1
+//       test2=2
+// */
+import React, { Component } from "react";
+import "./editor.scss";
+import MonacoEditor from "react-monaco-editor";
+import { Button, Card, Upload, Icon, message, Switch, Input } from "antd";
+import Request from "utils/request";
+class Editor extends Component {
+
+ constructor(props) {
+  super(props);
+  this.monacoEditorRef = React.createRef();
+  this.state = {
+   code: "",
+   fileInfo: {},
+   body: {}
+  };
+ }
+ componentDidMount() {
+  Request('/apis/admin/v1/clusters/nerbotest', {
+   method: "get"
+  }).then(res => {
+   let envs = res.spec.envs;
+   let list = [];
+   envs.forEach(item => {
+    list.push([item.available ? `*${item.key}` : item.key, item.value]);
+   });
+   let code = this.handleFormatCode(list);
+   console.log('did', JSON.stringify(code))
+   this.setState({ body: res, code });
+  });
+ }
+ // 上传变化事件
+ handleChange = info => {
+  let fileName = info.file.name;
+  const name = fileName.substring(fileName.lastIndexOf("."), fileName.length).toLowerCase();
+  if (name !== ".txt") {
+   return message.error("请选择txt格式");
+  }
+  if (info.file.response) {
+   info.file.url = info.file.response.url;
+  }
+  this.setState({ fileInfo: info });
+ };
+
+
+ //   编辑器变化事件
+ editorDidMount(editor, monaco) {
+  editor.focus();
+ }
+ onChange = (e) => {
+  this.renderVariable(e);
+ };
+ // 上传文件的函数
+ beforeUpload = (file) => {
+  let fileName = file.name;
+  const name = fileName.substring(fileName.lastIndexOf("."), fileName.length).toLowerCase();
+  if (name !== ".txt") {
+   return message.error("请选择txt格式");
+  }
+  const reader = new FileReader();
+  reader.readAsText(file);
+  reader.onloadend = (result) => {
+   let text = result.target.result;
+   if (!text.includes('=')) {
+    return message.error("非法文件");
+   }
+   this.renderVariable(text);
+  };
+  return false;
+ }
+ // 过滤左侧编辑器内容
+ renderVariable = (code) => {
+  // console.log('code', JSON.stringify(code))
+  this.setState({ code });
+ }
+
+ // 添加事件
+ handleAdd = () => {
+  this.setState({ code: `${this.state.code}\r=` });
+ }
+ // 处理数组的公用方法
+ handleCallback = (callback) => {
+  let list = this.handleFormatList(this.state.code);
+  callback(list);
+  let code = this.handleFormatCode(list);
+  this.setState({ code });
+ }
+ // 开关事件
+ switchChange = (index, checked) => {
+  this.handleCallback((list) => {
+   list[index][0] = checked ? `*${list[index][0]}` : list[index][0].substring(1);
+  });
+ }
+ //  删除事件
+ handleDelete = (index) => {
+  this.handleCallback((list) => {
+   list.splice(index, 1);
+  });
+ }
+ // key变化
+ handleChangeKey = (index, e) => {
+  this.handleCallback((list) => {
+   list[index][0] = e.target.value;
+  });
+ }
+ // value变化
+ handleChangeValue = (index, e) => {
+  this.handleCallback((list) => {
+   list[index][1] = e.target.value;
+  });
+ }
+ handleFormatList(code) {
+  if (JSON.stringify(code) === JSON.stringify('\n=') ||
+   JSON.stringify(code) === JSON.stringify('\r=')) 
+   {code = `=${code}`;
+   this.setState({ code: `=${code}` });
+  }
+  let list = code.trim().replace(/[\n\r]/g, '\r').split('\r');
+  for (let i = 0; i < list.length; i++) {
+   if (list[i].includes('=')) {
+    list[i] = list[i].split('=')
+   } else {
+    list[i] = ['', '']
+   }
+  }
+  return list;
+ }
+ handleFormatCode(list) {
+  for (let i = 0; i < list.length; i++) {
+   list[i] = `${list[i][0]}=${list[i][1]}`;
+  }
+  let code = list.join('\r');
+  return code;
+ }
+ render() {
+  const options = {
+   selectOnLineNumbers: true
+  };
+
+  const props = {
+   name: "file",
+   action: "",
+   headers: {
+    authorization: "authorization-text",
+   },
+   onChange(info) {
+    if (info.file.status !== 'uploading') {
+     console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+     message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+     message.error(`${info.file.name} file upload failed.`);
+    }
+   }
+  };
+  let code = this.state.code;
+  if (JSON.stringify(code[code.length - 1]) === JSON.stringify("\n")) {
+   code = `${code}=`;
+  }
+  console.log('render', JSON.stringify(code));
+  let list = this.handleFormatList(code);
+  return (
+   <div>
+    <h2 className="title">
+     集群名称：{window.location.search.split('=')[1]}
+    </h2>
+    <div className="deitorBox" >
+
+     <Card title="加载文件" className="left" >
+      <Upload {...props} beforeUpload={this.beforeUpload} showUploadList={false}>
+       <Button> <Icon type="upload" /> 加载文件 </Button>
+      </Upload>
+      <p className="text" > 仅支持加载纯文本类型的文件 </p >
+      <MonacoEditor
+       className="monaco"
+       height="200px"
+       language="yaml"
+       theme="vs-dark"
+       ref={this.monacoEditorRef}
+       value={code}
+       options={options}
+       onChange={this.onChange}
+       editorDidMount={this.editorDidMount} />
+     </Card>
+     <Card title="生成环境变量" className="right" > {
+      list.map((item, index) => {
+       return (<div className="list" key={index}>
+        <div className="key" > {index + 1}.key: <Input className="item" placeholder="key" onChange={this.handleChangeKey.bind(this, index)} defaultValue={item[0]} value={item[0]} />
+        </div>
+        <div className="value" > value: <Input className="item" type="text" placeholder="value" onChange={this.handleChangeValue.bind(this, index)} defaultValue={item[1]} value={item[1]} />
+        </div>
+        <Switch size="small"
+         checked={/^[*].*/.test(item[0])}
+         onChange={this.switchChange.bind(this)} />
+        <Icon type="close"
+         onClick={this.handleDelete.bind(this, index)} /> </div>)
+      })
+     }
+      <p> <Icon type="plus-square" onClick={this.handleAdd.bind(this)} /></p >
+     </Card>
+    </div>
+   </div>
+  )
+ }
+}
+export default Editor;

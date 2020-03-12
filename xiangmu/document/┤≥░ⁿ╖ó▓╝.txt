@@ -1,0 +1,7 @@
+发布的流程
+1、修改evn中serverUrl=>http://123.126.152.178:8198 
+
+2、打包命令
+      npm run build
+3、打包后的文件
+      web/dist

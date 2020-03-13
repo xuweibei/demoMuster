@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+@-webkit-keyframes fadenum{ /*设置内容由显示变为隐藏*/
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadenum{ /*设置内容由显示变为隐藏*/
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+
+}
+
+@-o-keyframes fadenum{ /*设置内容由显示变为隐藏*/
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes fadenum{ /*设置内容由显示变为隐藏*/
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/*元素使用该效果*/
+
+.demo{
+    width:300px;
+    height: 200px;
+    background: red;
+    -webkit-animation: fadenum 2s ease;
+    -moz-animation: fadenum 4s ease;
+    animation:fadenum 4s ease;
+}
+
+    </style>
+</head>
+<body>
+    <div class="demo"></div>
+</body>
+</html>

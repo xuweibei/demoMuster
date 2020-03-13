@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            display: flex;
+            border:1px solid black;
+            width:300px;
+            /* flex-wrap:wrap-reverse;  排不下时， nowrap 不换行，wrap换行，第一行为多的；wrap-reverse换行，最后一行为多的 */
+            /* flex-flow:column wrap; */
+            /* justify-content:space-around; */
+            align-items: center;
+        }
+        .box1{
+            width:50px;
+            height:50px;
+            background:red;
+            margin:10px;
+            /* flex-shrink: 1; 缩小，默认为0，数值越大，空间不足时，缩小的比例越大 */
+            /* flex-grow:1 平分剩余空间  默认为0 ，数值越大，剩余空间的占比也就越大 */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    </div>
+    <script type="text/javascript">
+        const box = document.getElementsByClassName('box')[0];
+        for(let i =0;i <6 ; i ++){
+            const divs = document.createElement('div');
+            divs.className = 'box1';
+            divs.innerHTML = i+1;
+            box.appendChild(divs)
+        }
+    </script>
+</body>
+</html>

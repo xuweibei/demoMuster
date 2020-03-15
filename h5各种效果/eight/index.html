@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width:660px;
+            height:600px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .wrap div{
+            width:200px;
+            border:1px solid #ccc;
+
+        }
+        .wrap div span{
+            display: inline-block;
+            width:100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <select id="select" onchange="slectchange()">
+        <option value="">--请选择--</option>
+        <option value='0'>
+            一等奖
+        </option>
+        <option value='1'>
+            二等奖
+        </option>
+        <option value='2'>
+            三等奖
+        </option>
+        <option value='3'>
+            四等奖
+        </option>
+        <option value='4'>
+            五等奖
+        </option>
+        <option value='5'>
+            六等奖
+        </option>
+        <option value='6'>
+            七等奖
+        </option>
+        <option value='7'>
+            八等奖
+        </option>
+    </select>
+    <div class="wrap">
+        <!-- <div>
+            <img src="./img/img1.png"/>
+            <span>一等奖</span>
+        </div> -->
+    </div>
+    <script type="text/javascript">
+        const wrap = document.getElementsByClassName('wrap')[0];
+        for(let i = 0 ;i <8 ;i++){
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = `./img/img${i+1}.png`;
+            if(i===0){
+                img.src = `./img/img${11}.png`;
+            }
+            const span = document.createElement('span');
+            span.innerHTML = i+1+ '等奖';
+            div.appendChild(img);
+            div.appendChild(span);
+            if(i<3){
+                div.style.order = 0;
+            }
+            if(i==3){
+                div.style.order = 3;
+            }
+            if(i==4){
+                div.style.order = 6;
+            }
+            if(i==5){
+                div.style.order = 5;
+            }
+            if(i==6){
+                div.style.order = 4;
+            }
+            if(i===7){
+                div.style.order = 1;
+            }
+            if(i == 4){
+                const right = document.createElement('div');
+                const text = document.createElement('span');
+                text.innerHTML = '开始';
+                right.style.order=2;
+                right.style.lineHeight = '220px';
+                right.appendChild(text);
+                right.className = 'btn'
+                wrap.appendChild(right)
+            }
+            wrap.appendChild(div)
+        }
+    </script>
+    <script type="text/javascript">
+        const btn = document.getElementsByClassName('btn')[0];
+        const imgs = document.getElementsByTagName('img');
+        let tiemr = null;
+        let speed = 100;
+        let now = 0;
+        let prev = 0;
+        var onOff = false;
+        let end = Math.ceil(Math.random()*(7));
+
+        function trunRight(){
+            if(!onOff){
+                speed -=10;
+            }
+            now +=1;
+            clearTimeout(tiemr);
+            if(now >= imgs.length){
+                now = 0;
+            }
+            if(speed>30){
+                tiemr = setTimeout(()=>{
+                    imgs[prev].src = `./img/img${prev+1}.png`
+                    imgs[now].src = `./img/img${11+now}.png`
+                    prev = now;
+                    if(onOff){
+                        speed +=3
+                    }
+                    if(onOff&& speed > 200 && now == end){
+                        return
+                    }else{
+                        trunRight()
+                    }
+                },speed);
+            }else{
+                speed += 30
+                onOff = true;
+                trunRight()
+            }
+        }
+
+        
+        btn.onclick = ()=>{
+            const select = document.getElementById('select');
+            speed = 200;
+            onOff = false;
+            end = select.value || Math.ceil(Math.random()*(7));
+            trunRight()
+        };
+
+        function slectchange(){
+            const select = document.getElementById('select');
+            end= select.value
+        }
+    </script>
+</body>
+</html>

@@ -23,7 +23,7 @@
     "echarts-for-react": "^1.4.4",
     "g2-mobile": "2.1.13",
     "history": "^4.3.0",
-    "lodash": "^4.16.4",
+    "lodash": "^4.17.19",
     "prop-types": "^15.5.10",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

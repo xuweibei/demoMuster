@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>小米官网</title>
+	<link rel="stylesheet" type="text/css" href='./xiaomi.css' />
+	<script>
+		window.onload = () => {
+			window.onresize = (e) => {
+				const footer = document.getElementById('page-footer')
+				const nav = document.getElementsByClassName('top-nav')[0]
+				const navH = document.getElementsByClassName('top-nav-h5')[0]
+				if (window.outerWidth < 1230) {
+					footer.style.display = 'none';
+					nav.style.display = 'none';
+					navH.style.display = 'flex'
+				} else {
+					footer.style.display = 'block';
+					nav.style.display = 'flex';
+					navH.style.display = 'none'
+				}
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div id="xm-wrap">
+		<div id="page-top">
+			<div class="top-nav">
+				<div class="logo">
+					<a href="/">
+						<img src='./images/xm/logo.png' />
+					</a>
+				</div>
+				<ul class="nav-list">
+					<li>小米官网</li>
+					<li>小米商城</li>
+					<li>小米影响</li>
+					<li>MIUI</li>
+					<li>IoT</li>
+					<li>云服务</li>
+					<li>天星数科</li>
+					<li>有品</li>
+					<li>小爱开放平台</li>
+					<li>企业团购</li>
+				</ul>
+				<div class="top-login">
+					<a href="/">登录</a><span>|</span><a href="/">注册</a>
+				</div>
+			</div>
+			<div class="top-nav-h5">
+				<div class="logo">
+					<a href="/">
+						<img src='./images/xm/logo.png' />
+					</a>
+				</div>
+				<div class="user-info">
+					<img src="./images/xm/user.png" />
+					<img src="./images/xm/menu.png" />
+				</div>
+			</div>
+		</div>
+		<div id="page-connect">
+			<img class="connect-img" src='./images/xm/xm1.jpeg' />
+			<img class="connect-img" src='./images/xm/xm2.jpeg' />
+			<img src='./images/xm/line.png' />
+			<img class="connect-img" src='./images/xm/xm3.jpeg' />
+			<img src='./images/xm/line.png' />
+			<img class="connect-img" src='./images/xm/xm4.jpeg' />
+			<img src='./images/xm/line.png' />
+			<img class="connect-img" src='./images/xm/xm5.jpeg' />
+			<img src='./images/xm/line.png' />
+			<img class="connect-img" src='./images/xm/xm6.jpeg' />
+			<img src='./images/xm/line.png' />
+			<div class='shuffling-wrap'>
+				<ul class="shuffling-images">
+					<li><img src='./images/xm/xm7.jpeg' /></li>
+					<li><img src='./images/xm/xm8.png' /></li>
+					<li><img src='./images/xm/xm9.jpeg' /></li>
+				</ul>
+				<span class="shuffling-icon-left">
+					<</span> <span class="shuffling-icon-right">>
+				</span>
+				<ol class="shufflingfooter">
+					<span></span>
+					<span></span>
+					<span></span>
+				</ol>
+			</div>
+			<img class="connect-img" src='./images/xm/xm10.jpeg' />
+		</div>
+		<div id="page-footer">
+			<div class="site-footer">
+				<div class="footer-content">
+					<div class="content-left">
+						<ul></ul>
+						<ul>
+							<li>选购指南</li>
+							<li>手机</li>
+							<li>电视</li>
+							<li>笔记本</li>
+							<li>平板</li>
+							<li>穿戴</li>
+							<li>耳机</li>
+							<li>家电</li>
+							<li>路由器</li>
+							<li>音箱</li>
+							<li>配件</li>
+							<li>手机</li>
+						</ul>
+						<ul>
+							<li>选购指南</li>
+							<li>申请售后</li>
+							<li>售后政策</li>
+							<li>维修服务价格</li>
+							<li>订单查询</li>
+							<li>以旧换新</li>
+							<li>保障服务</li>
+							<li>防伪查询</li>
+							<li>F码通道</li>
+						</ul>
+						<ul>
+							<li>选购指南</li>
+							<li>小米之家</li>
+							<li>服务网点</li>
+							<li>授权体验店/专区</li>
+						</ul>
+						<ul>
+							<li>选购指南</li>
+							<li>了解小米</li>
+							<li>加入小米</li>
+							<li>投资者关系</li>
+							<li>环境，社会及管治</li>
+							<li>廉洁举报</li>
+						</ul>
+						<ul>
+							<li>选购指南</li>
+							<li>新浪微博</li>
+							<li>官方微信</li>
+							<li>联系我们</li>
+							<li>公益基金会</li>
+						</ul>
+					</div>
+					<div class="content-right">
+						<p>400-100-5678</p>
+						<span>8:00-18:00（仅收市话费）</span>
+						<div>人工客服</div>
+					</div>
+				</div>
+			</div>
+			<div class="site-info">
+				<div class="info-wrap">
+					<img class="footer-logo" src="./images/xm/logo.png" />
+					<div class="info-content">
+						<span>小米商城</span>
+						<i></i>
+						<span>MIUI</span>
+						<i></i>
+						<span>米家</span>
+						<i></i>
+						<span>米聊</span>
+						<i></i>
+						<span>多看</span>
+						<i></i>
+						<span>游戏</span>
+						<i></i>
+						<span>政企服务</span>
+						<i></i>
+						<span>小米天猫店</span>
+						<i></i>
+						<span>小米集团隐私政策</span>
+						<i></i>
+						<span>小米公司儿童信息保护规则</span>
+						<i></i>
+						<span>小米商城隐私政策</span>
+						<i></i>
+						<span>小米商城用户协议</span>
+						<i></i>
+						<span>问题反馈</span>
+						<i></i>
+						<span> Select Location</span>
+						<br />
+						<span>北京互联网法院法律服务工作站</span>
+						<i></i>
+						<span>中国消费者协会</span>
+						<i></i>
+						<span>北京消费者协会</span>
+						<p>
+							© mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2020]0276-042号<br />
+							（京）网械平台备字（2018）第00005号 互联网药品信息服务资格证 (京)-非经营性-2014-0090 营业执照 医疗器械质量公告<br />
+							增值电信业务许可证 网络食品经营备案 京食药网食备202010048 食品经营许可证<br />
+							违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试
+						</p>
+						<ul>
+							<li><img src="./images/xm/logo1.png" /></li>
+							<li><img src="./images/xm/logo2.png" /></li>
+							<li><img src="./images/xm/logo3.png" /></li>
+							<li><img src="./images/xm/logo4.png" /></li>
+							<li><img src="./images/xm/logo5.png" /></li>
+						</ul>
+					</div>
+				</div>
+				<div class="footer-back-info"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
